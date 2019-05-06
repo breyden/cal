@@ -1,0 +1,42 @@
+	<script type="text/javascript">
+	function evaluate() {
+		var input = prompt("Please enter your input string\n\nExamples of input strings:\n\n\t1. 10 4 5 + *\n\t2. 10 4 5 + * 2 +\n\t3. 10 8 *");
+		var values = input.split(" ");
+		var array = new Array();
+		for (i in values) {
+			if (values[i] != "+" && values[i] != "*" && values[i] != "-" && values[i] != "/") {
+				array.push(parseInt(values[i]));
+			} else {
+				var operator = values[i];
+				var val2 = array.pop();
+				var val1 = array.pop();
+				switch (operator) {
+					case "+":
+						array.push(eval("val1 + val2"));
+						break;
+					case "*":
+						array.push(eval("val1 * val2"));
+						break;
+					case "-":
+						array.push(eval("val1 - val2"));
+						break;
+					case "/":
+						array.push(eval("val1 / val2"));
+						break;
+				}
+			}
+		}
+		if (input == "" || input == null) {
+			document.writeln("Oops, based on your input we have nothing to calculate for you!");
+		} else {
+			document.writeln("Your RPN calculation is: ");
+			document.writeln(array);
+		}
+	}
+</script>
+<div>
+  <h2>Online RPN Calculator</h2>
+	<script type="text/javascript">
+		evaluate();
+	</script>
+</div>
